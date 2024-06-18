@@ -1,5 +1,5 @@
 
-### Finding a model
+## Finding a model
 
 Once you know what kind of model you want to use and have a certain degree of confidence that it could theoretically exist. You are left with the sometimes intimidating task of finding one.
 
