@@ -21,7 +21,7 @@
 	}
 
 	ul li::after {
-		content: '>';
+		/* content: '>'; */
 		margin: 0 8px;
 		color: #aaa;
 		font-size: 12px;
