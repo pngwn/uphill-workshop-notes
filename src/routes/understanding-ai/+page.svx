@@ -1,0 +1,46 @@
+## Understanding AI Capabilities
+
+One of the challenges with incorporating machine leaning into an application is understanding the capabilities and limitations of machine learning. While there is no silver bullet, as the field is dynamic and changes frequently, there are a few principle that we can follow in order to broadly assess what machine learning can do and whether to not it will work for our use case.
+
+
+### Prediction engines
+
+At their core, machine learning models function as sophisticated prediction engines. These models identify patterns within data and make informed predictions based on those patterns. Whether predicting the next word in a sentence or forecasting stock market trends, the goal is to use historical data to predict future outcomes.
+
+The process starts with training the model on a dataset where the outcomes are known. By comparing its predictions with actual outcomes, the model adjusts its parameters to improve accuracy. This training allows the model to generalize from specific examples to broader applications, making it capable of handling new data.
+
+In essence, the predictive nature of machine learning models makes them powerful tools for anticipating future events and trends but also highlight their limitations. The quality and breadth of the data that is used for training often dictates how well-suited a model will be for a task.
+
+### Understanding modalities
+
+Machine learning modalities are the various types of data that machine learning models can process, such as text, images, audio, and video. Each modality requires specialized techniques and architectures, but more importantly give strong indications on whether or not they will be suitable for a given task or set of data. By handling different modalities, machine learning models can be applied across diverse applications, from speech recognition to image classification and beyond.
+
+Common modalities include images, audio, video, text. Some models support multiple modalities.
+
+### Understanding tasks
+
+Machine learning tasks are less clearly defined but generally refer to a specific goal that a user may have in mind. The task is often dependent on usage because some models possess a variety of capabilities, some of which only present themselves when used in a specific way. 
+
+An example of this is a Large Language Model. These models possess a variety of capabilities and are suitable for a variety of tasks, such as summarisation and classification.
+
+So while the modality or modalities of a model can be clearly defined, the tasks that a model is capable of often requires some experimentation. Some models are designed with a very specific tasks in mind but others are more general in their capabilities. Often, creative use of such models can result in new and interesting tasks that had not been previously considered.
+
+Examples of tasks include classification, regression, translation, and generation.
+
+### Modality-task matrix
+
+When selecting a model both the data you have available and the thing you wish to accomplish have to be considered at all times. With this in mind I have developed a simple matrix that can help you to asses which model might work for you.
+
+This matrix is definitely a simplification but offers a good starting point. The modality of a model should be matched to the data you have available to input and the tasks should align (roughly) with your end goal.
+
+| Modality  | Classification            | Regression                  | Clustering             | Generation           | Translation         | Detection           | Segmentation        |
+|-----------|---------------------------|-----------------------------|------------------------|----------------------|---------------------|---------------------|---------------------|
+| Text      | Sentiment Analysis        | Sentiment Score Prediction  | Topic Clustering       | Text Generation      | Language Translation| Named Entity Recognition | -                  |
+| Images    | Image Classification      | Image Quality Estimation    | Image Clustering       | Image Synthesis      | Image Captioning    | Object Detection    | Image Segmentation  |
+| Audio     | Speaker Identification    | Emotion Intensity Prediction| Sound Clustering       | Audio Generation     | Speech-to-Text      | Sound Event Detection | -                  |
+| Video     | Activity Recognition      | -                           | Scene Clustering       | Video Generation     | -                   | Action Detection    | Video Segmentation  |
+| Tabular   | Customer Classification   | Sales Prediction            | Customer Segmentation  | -                    | -                   | Anomaly Detection   | -                  |
+| Time Series | Fault Detection         | Stock Price Prediction      | Pattern Clustering     | -                    | -                   | Anomaly Detection   | -                  |
+| Graphs    | Node Classification       | -                           | Community Detection    | Graph Generation     | -                   | Link Prediction     | -                  |
+
+Using this matrix you may (no guarantees) be able to use more specific language to filter out more models leaving fewer candidates to assess.

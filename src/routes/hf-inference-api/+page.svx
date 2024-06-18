@@ -1,0 +1,80 @@
+### Hugging Face Inference API
+
+The Hugging Face Inference API allows you to use a variety of different models for free via an API.
+
+The supported models change over time but typically include some of the most important or popular models at any given time. For example, you can currently access a variety of Meta’s Llama 3 models and certain Mistral models via the Inference API.
+
+See the [Inference API docs](https://huggingface.co/docs/api-inference/en/index) for more info.
+#### Limits
+
+In order for the Inference API to be sustainable there are certain limits, these limits are not currently documented but you generally have access to smaller models for free and have a request allowance that should suffice for experimentation.
+
+To access large models (such as 70B parameter models) you can subscribe to Hugging Face Pro (around 10USD per month). This also increases your request allowance.
+
+You can read more [here](https://huggingface.co/docs/api-inference/en/faq).
+
+#### Using the Inference API
+
+The inference API is accessible via either the JavaScript client or the Python client.
+
+##### JavaScript
+
+Install the JavaScript inference client
+
+```bash
+npm install @huggingface/inference
+```
+
+Create a client instance
+
+```ts
+import { HfInference } from '@huggingface/inference'
+
+const hf = new HfInference(hf_access_token)
+```
+
+Make a request:
+
+```ts
+await hf.textGeneration({
+  model: 'gpt2',
+  inputs: 'The answer to the universe is'
+})
+
+for await (const output of hf.textGenerationStream({
+  model: "google/flan-t5-xxl",
+  inputs: 'repeat "one two three four"',
+  parameters: { max_new_tokens: 250 }
+})) {
+  console.log(output.token.text, output.generated_text);
+}
+```
+
+
+For more information and to see how to perform other tasks, [check the documentation](https://huggingface.co/docs/huggingface.js/inference/README#natural-language-processing).
+
+##### Python
+
+Install the Python hub client library
+
+```bash
+pip install huggingface_hub
+```
+
+Create a client instance
+
+```py
+from huggingface_hub import InferenceClient
+client = InferenceClient(token=hf_access_token)
+```
+
+Make a prediction:
+
+```py
+image = client.text_to_image(
+  "An astronaut riding a horse on the moon."
+)
+image.save("astronaut.png")
+```
+
+Further information can be found on the [hub docs page](https://huggingface.co/docs/huggingface_hub/guides/inference#using-a-specific-model)

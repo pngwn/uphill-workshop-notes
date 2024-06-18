@@ -1,0 +1,86 @@
+### Gaining more control
+
+While the above prompting techniques can help to get relevant and accurate responses, there is still plenty of opportunity for the model to hallucinate, generate very long output, or just generally do something undesirable, even if the output is generally correct.
+
+An example of this is our first prompt example.
+
+```
+"Classify the text into neutral, negative, or positive. Text: 'This movie is great!' Sentiment: "
+```
+
+While the expectation here is pretty clear, the model could still produce output that isn’t quite what you are expecting. In an ideal scenario, the model oils produce just a single word (the most likely class), however it may ‘get creative’. It is perfectly reasonable for the LLM to produce any of the following outputs:
+
+- “positive” - great
+- “Positive” - capitalised but fine
+- “Mostly positive” - this wasn’t a class
+- “Positive. The language used is mostly speaking in favour of the subject” - The added explanation is not ideal
+
+In cases where the output will be used in a ‘natural language’ context, i.e. a human is going to read it for refine it further, this isn’t a huge problem even if it isn’t ideal. But in cases where we want to do something programmatic with the output, it is entirely possible that any output other than the first ‘correct’ response could be completely useless, even though all of the responses are correct.
+
+#### Guided output
+
+In an ideal world we could leverage the excellent predictive skills of an LLM while getting guarantees about the shape of the output.
+
+Thankfully this is possible with guided or constrained output. A number of libraries facilitate this by taking a schema of some description that describes the output and manipulating the LLMs prediction engine to guarantee that only outputs that precisely fit the schema are possible.
+
+#### outlines
+
+Outlines is a library that allows you to define a schema to guarantee a certain output. It has integrations with `llama-cpp-python`, `transformers`, and a variety of other libraries.
+
+With outlines we can do the following, knowing exactly what output we are going to get back:
+
+```py
+import outlines
+
+model = outlines.models.transformers("mistralai/Mistral-7B-Instruct-v0.2")
+generator = outlines.generate.choice(
+  model, 
+  ["neutral", "negative", "positive"]
+)
+
+sentiment = generator("Classify the following text. Text: 'This movie is great!' Sentiment:  ")
+
+print(sentiment)
+```
+
+##### JSON Schema
+
+I particularly like outlines because it has a great API for definite a JSON, schema. JSON-based output is one of the more useful forms of constrained output from an LLM. It is essentially for function calling and great for when you want to programmatically to something with the output directly.
+
+`outlines` using Pydantic types to define the schema. Pydantic is a data modelling and validation library in python and it makes definite data models very straightforward.
+
+This is an example:
+
+```py
+from pydantic import BaseModel
+import outlines
+
+
+class Person(BaseModel):
+    name: str
+    age: int
+    location: str
+
+model = outlines.models.transformers(
+  "mistralai/Mistral-7B-Instruct-v0.2"
+)
+generator = outlines.generate.json(
+  model, 
+  Character
+)
+
+person = generator(
+    "Extract the details from this text: "
+    + "Frances is 27 and lives in New York City"
+    )
+
+print(person)
+
+# name=“Frances”
+# age=27 
+# location=“New York City”
+```
+
+This is a powerful way to use the full power of an LLM while still guaranteeing as certain output shape.
+
+I’d encourage you to [check out the docs](https://outlines-dev.github.io/outlines/) for more information. Outlines is capable of many things.

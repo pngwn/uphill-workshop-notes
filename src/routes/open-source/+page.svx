@@ -1,0 +1,25 @@
+## Why Open Source
+
+### Collaboration and Innovation
+- **Pooling Resources**: Collaborate to fix bugs, improve quickly, and build on each other's work.
+- **Fostering Innovation**: Encourage new discoveries, bias detection, and efficiency improvements through shared access to code and data.
+
+### Inclusion and Accessibility
+- **Broad Access**: Diverse groups can access and contribute to open-source projects, enhancing inclusivity.
+- **Educational Value**: Students and non-tech users can learn AI and other technologies through open resources.
+
+### Speed and Flexibility
+- **Rapid Development**: Diverse input accelerates progress.
+- **IT Flexibility**: Users can train and deploy models anywhere, with the freedom to switch models as needed.
+
+### Transparency and Security
+- **Transparency**: Open access to models and data ensures visibility, accountability, and recourse.
+- **Security**: Open source enhances defense against malicious activity and reduces single points of failure.
+
+### Economic and Ecosystem Benefits
+- **Economic Opportunity**: Supports a diverse market of complementary products.
+- **Ecosystem Development**: Builds communities around open models, fostering collaborative growth.
+
+### Open models vs. Closed APIs
+
+While ML researchers and scientists inherently appreciate the benefits of open models for their reproducibility and deeper investigative potential, software engineers building products on top of LLMs should also consider open models over closed APIs. Firstly, open models enhance product reliability by eliminating the single point-of-failure associated with closed APIs, allowing the use of multiple API providers and libraries that optimize availability and latency. Secondly, open models facilitate a seamless transition to local deployment, reducing costs and latency without altering prompts or logic, thus minimizing technical debt. Lastly, they offer greater flexibility in balancing latency and cost, supporting diverse infrastructure needs, and enabling tailored solutions for different user segments and product features.

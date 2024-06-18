@@ -1,0 +1,15 @@
+## Using machine learning models
+
+There are many ways to use a machine learning models, we will look at a few examples in detail.
+
+- [Hugging Face Inference API](/hf-inference-api)
+- [`llama.cpp`](/llama-cpp)
+
+Other libraries that can be used to use models are:
+
+### Other ways of using ML models
+
+- **[`transformers`](https://huggingface.co/docs/transformers/index)**:train and run almost anything.
+- **[`diffusers`](https://huggingface.co/docs/diffusers/index)**: For diffusion models such as many image and audio generation models
+- **[`sentence-transformers`](https://sbert.net)**: for text and image embedding models
+- **[`mlx`](https://ml-explore.github.io/mlx/build/html/index.html)**: run machine learning models on apple hardware

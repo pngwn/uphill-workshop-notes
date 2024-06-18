@@ -1,0 +1,5 @@
+## Controlling LLMs
+
+While LLMs are powerful tools getting the most out of them can be challenging, not least because of how you need to ‘guide’ them produce relevant and accurate output. 
+
+Here we list a few approaches to maximising the effectiveness of LLMS.

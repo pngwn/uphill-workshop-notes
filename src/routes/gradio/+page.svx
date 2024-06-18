@@ -1,0 +1,82 @@
+## Gradio
+
+Gradio is a python library that allows you to generate a user interface for a machine learning model (or for any reason really) very simple.
+
+While the benefits to a software engineer might not be immediately apparent, it is still useful, even if you are comfortable building your own UIs.
+
+### Benefits of gradio
+
+#### Rapid Experimentation
+
+Gradio accelerates the creation of user interfaces for ML models, enabling quick prototyping and testing with or without extensive JavaScript and HTML knowledge. Its intuitive API allows developers to build interactive interfaces with minimal code, facilitating immediate feedback and iterative model improvement. Gradio also offers flexibility for customizing interfaces to adapt experiments based on initial results.
+
+#### Testing and Benchmarking
+
+Gradio simplifies testing and benchmarking by providing consistent interfaces for model evaluation, ensuring fair comparisons. It facilitates easy sharing of interfaces, enabling collaborative testing and peer reviews through simple links. Additionally, Gradio can integrate into automated testing pipelines, supporting continuous integration and delivery (CI/CD) practices in ML workflows.
+
+#### Capitalizing on the Python Ecosystem
+
+Gradio leverages Python's rich ML ecosystem, integrating seamlessly with popular libraries like TensorFlow, PyTorch, and Scikit-learn. The extensive Python community offers abundant resources and support. Gradio interfaces can be reused across projects, promoting efficient workflows and code reuse, especially in collaborative environments. This makes it especially beneficial, even to experienced frontend developers, as while the JavaScript AI ecosystem is gradually improving the python ecosystem offers a much larger number of interesting libraries and integrations, many of while require your to be as close to the models as possible (i.e. integrating with PyTorch et al), many of these python libraries have capabilities that are impossible or very difficult for other languages.
+
+### Using gradio
+
+There are two main approaches to building gradio demos.
+
+Either using a high level API such as `Interface` or `ChatInterface` or the lower level `Blocks` API.
+
+#### `Interface`
+
+This API allows you to spin up a UI with just a few lines of python. While this approach is very simple and very fast you don’t have as much control over the UI.
+
+```py
+import gradio as gr
+
+def greet(name):
+    return "Hello " + name + "!"
+
+demo = gr.Interface(fn=greet, inputs="text", outputs="text")
+demo.launch()
+```
+
+`ChatInterface` is similar to `Interface` except it is specifically designed for building chatbots.
+
+Refer to the documentation for more info on [`gr.Interface`](https://www.gradio.app/guides/the-interface-class) and [`gr.ChatInterface`](https://www.gradio.app/guides/creating-a-chatbot-fast).
+
+#### `Blocks`
+
+The blocks API is a much more powerful and flexible API but is a little more complex with more things to consider.
+
+At its core, it is simply a tree of UI components and some event listeners that dictate how the app should behave.
+
+In gradio there are four important concepts when working with event listeners: the target, the inputs, the outputs, and the prediction function.
+
+- **target**: The target is the component that triggers the event you care about. For example in `gr.Button().click(...)` the button is the target that is emitting the event. This is similar to DOM events on the web.
+- **inputs**: The inputs are the the components whose values will be passed to the predict function, inputs in gradio usually refer to components and not arbitrary data like in other UI frameworks. For example if a Textbox is an ‘input’ for a specific event, then the value of that textbox will be extracted and passed to the predict function.
+- **outputs**: The outputs are the components that will receive the data that is returned from. For example if you were generating an image from some text, then you would mark an Image component as the output for a specific event. When the prediction had complete, gradio would pass that image data to the Image component.
+- **prediction function**: sometimes just referred to as ‘the function’ or an ‘event handler’, this is function that performs the inference. It received values from the input components, and the value returned from this function is passed to the output components.
+
+
+Together this looks a little like this:
+
+```py
+import gradio as gr
+
+def predict(text):
+  prediction = make_image(text)
+  return prediction
+
+with gr.Blocks() as demo:
+  text = gr.Textbox()
+  image = gr.Image()
+  btn = gr.Button(“Run Prediction”)
+  
+  btn.click(predict, inputs=text, outputs=image)
+  
+demo.launch()
+```
+
+In this example we are triggering the function `predict` when a specific `Button` is `click`ed. The `predict` function will receive the value of the `Textbox` which is always a string and its return value will be passed to the `Image` component, which always expects images data.
+
+Different components provide different types of data when used as inputs and expect a certain type of data when used as outputs. There are many components in gradio and these details along with other information can be found in the [component documentation](https://www.gradio.app/docs/gradio/introduction).
+
+For more information on gradio blocks, [the guide](https://www.gradio.app/guides/blocks-and-event-listeners) offers a great place to start.

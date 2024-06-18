@@ -1,0 +1,41 @@
+## Prompt Engineering
+
+Prompt engineering is crucial for effectively using large language models. By crafting precise and well-structured prompts, you can significantly improve the model's performance and ensure that it produces relevant and accurate responses.
+
+While prompt engineering sounds fancy, it isn’t an exact science and results will vary depending on the models being used. Prompt Engineering is valuable as a skill set but also a helpful framing technique. The real benefits comes from experimentation and being very intentional about the prompts that you craft.
+
+### Types
+
+Prompt engineering can involve several techniques, including:
+
+1. **Zero-Shot Prompting**: Asking the model to perform a task without providing examples.
+2. **Few-Shot Prompting**: Giving a few examples within the prompt to guide the model.
+3. **Chain-of-Thought Prompting**: Encouraging the model to explain its reasoning process step-by-step.
+4. **Contextual Prompting**: Providing additional context or background information to improve the model’s responses.
+
+### Examples
+- **Text Classification**: "Classify the text into neutral, negative, or positive. Text: 'This movie is great!' Sentiment: "
+	- Here we are ‘pre-filling’ the response, so that the LLM can finish it off. Doing this increases the chance of getting a good response, because the number of likely different response for this start text is much smaller, than if it we left it open ended.
+- **Named Entity Recognition**: "Extract the names of people, organizations, and places from the following text: 'John works at Hugging Face inNew York.'"
+	- In this example, we clearly describe which ‘classes’ we are interested in, increasing the chance that we will get a meaningful response.
+- **Translation**: "Translate the following sentence from English to French: 'Hello, how are you?' Translation: "
+	- Again, we pre-fill the response text in the hopes of getting a more relevant result.
+- **Content Generation**: "Write a short story about a dragon who wants to learn to cook"
+	- This is a much more open ended prompt and great for more creative use cases such as content generation. Sometimes the unpredictable nature of LLMs is a huge benefit.
+
+### Resources
+
+To learn more about prompt engineering, you can explore the following resources:
+
+1. **Prompt Engineering Guide**: A comprehensive guide that covers various techniques and applications of prompt engineering [promptingguide.ai](https://www.promptingguide.ai).
+2. **GitHub Prompt Engineering Guide**: Offers practical tips and examples for developers [GitHub](https://github.com/dair-ai/Prompt-Engineering-Guide).
+3. **OpenAI Documentation**: Provides guidelines and best practices for using prompts with OpenAI models [OpenAI Platform](https://platform.openai.com/docs/guides/prompt-engineering).
+4. **Hugging Face Prompting Guide**: Focuses on using Hugging Face models for various NLP tasks [Hugging Face](https://huggingface.co/docs/transformers/main/tasks/prompting).
+5. **Anthropic Prompt Engineering Guide**: Detailed documentation on prompting approaches for Anthropic models [Anthropic](https://docs.anthropic.com/en/docs/prompt-engineering)
+6. **Mistral Prompting Capabilities**: Focuses on suing Mistral models [Mistral](https://docs.mistral.ai/guides/prompting_capabilities/)
+
+While some of these resources are model specific, they are all full of very useful information and can be a great starting point for prompting any model. In many cases the general approaches detailed in the model-specific guides can be followed with any model.
+
+In essence, you want to have a variety of techniques and approaches at your disposal and start experimenting, refining until you get results you are happy with.
+
+Assessing the output on ‘feel’ is a perfectly acceptable approach until you decide you want to benchmark and assess results more systematically.

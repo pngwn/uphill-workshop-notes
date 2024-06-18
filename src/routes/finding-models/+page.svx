@@ -1,0 +1,24 @@
+
+### Finding a model
+
+Once you know what kind of model you want to use and have a certain degree of confidence that it could theoretically exist. You are left with the sometimes intimidating task of finding one.
+
+Luckily, there are a few options available to us. 
+
+#### Tasks
+
+The simplest approach is to the Hugging Face Tasks page to explain in more detail how to achieve a specific goal and what models might be appropriate.
+
+[Hugging Face Tasks](https://huggingface.co/tasks)
+
+This section of the Hugging Face site can help point you in the right direction, although it isn’t exhaustive, but more importantly it will offer some examples of how execute the specific task, while explaining some of the challenges and limitations. If the exact task you are looking for does not exist, then it may be beneficial to select the most similar task and explore the subject from there.
+
+#### Hugging Face Model Hub
+
+Another way to find models is directly on the Hugging Face Hub, making use of the ability to search and filter by a variety of labels, tasks, and libraries.
+
+[Hugging Face Models](https://huggingface.co/models)
+
+Models are tagged with a variety of metadata allowing for some relatively fine filtering. While this won’t reduce the number of models down to one, it will significantly reduce the number of candidates.
+
+#### reddit
