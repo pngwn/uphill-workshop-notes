@@ -8,7 +8,7 @@
 	<li><Menu {nav_items} /></li>
 
 	<!-- <li><a href="">Section</a></li> -->
-	<li><a href="">Sub Section</a></li>
+	<!-- <li><a href="">Sub Section</a></li> -->
 </ul>
 
 <style>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { onNavigate } from '$app/navigation';
-	import Hamburger from './Hamburger.svelte';
 
 	export let nav_items: { name: string; href: string }[];
 
